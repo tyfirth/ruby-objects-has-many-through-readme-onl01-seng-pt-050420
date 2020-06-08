@@ -24,10 +24,12 @@ class Waiter
     end
   end
   
-  def customers
-    meals.map do |meal|
-      meal.customer 
+  def best_tipper
+    best_tipped_meal = meal.max do |meal_a, meal_b|
+      meal_a.tip <=> meal_b
     end
+    
+    best_tipped_meal.customer
   end
 
 end
